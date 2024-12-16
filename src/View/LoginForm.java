@@ -9,6 +9,7 @@ import static Koneksi.Koneksi.Connect;
 import Model.tb_login;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -143,9 +144,11 @@ public class LoginForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Username atau Password Salah !!");
                 }
 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.toString());
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null,"hehehe");
             }
+            
+             JOptionPane.showMessageDialog(null,"hehehe");
 
         }
 

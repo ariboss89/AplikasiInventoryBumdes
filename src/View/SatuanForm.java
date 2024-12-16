@@ -4,9 +4,9 @@
  */
 package View;
 
-import Dao.BarangDao;
-import Dao.KategoriDao;
-import Dao.SatuanDao;
+import DaoBumdes.BarangDao;
+import DaoBumdes.KategoriDao;
+import DaoBumdes.SatuanDao;
 import Model.tb_model;
 import javax.swing.JOptionPane;
 

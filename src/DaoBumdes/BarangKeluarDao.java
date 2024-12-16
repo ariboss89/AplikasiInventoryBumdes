@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package DaoBumdes;
 
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
@@ -30,7 +30,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "update tb_barang set stok='" + stok + "' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
@@ -44,7 +44,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "insert into dt_barangkeluar(idbarang, idbarang_keluar,  nama_barang, tanggal_keluar, jumlah, harga_barang, subtotal)"
                     + "values('" + idBarang + "', '" + idKeluar + "', '" + barang + "', '" + tanggal + "', '" + jumlah + "','" + harga + "', '" + subtotal + "')";
             st.executeUpdate(query);
@@ -60,7 +60,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "insert into tb_barangkeluar(Id, jumlah_barang,  total_bayar, bayar, kembali, tanggal, kasir)"
                     + "values('" + Id + "', '" + jmlBarang + "', '" + totBayar + "', '" + bayar + "', '" + kembali + "','" + tanggal + "', '"+kasir+"')";
             st.executeUpdate(query);
@@ -80,7 +80,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
         Connect();
         int jumlahBaris = 0;
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "SELECT COUNT(Id) AS Jumlah FROM dt_barangkeluar WHERE idbarang_keluar='" + idPesanan + "'";
             res = st.executeQuery(query);
             if (res.next()) {

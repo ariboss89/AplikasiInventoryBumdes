@@ -24,8 +24,8 @@ public class Koneksi {
         if (connection == null) {
             try {
 
-//              String url = "jdbc:mysql://localhost:3306/bumdesbarang?"+ "autoReconnect=true&useSSL=false";
-                String url = "jdbc:mysql://localhost:3306/bumdesbarang";
+                String url = "jdbc:mysql://localhost:3306/bumdesbarang?" + "autoReconnect=true&useSSL=false";
+                //String url = "jdbc:mysql://localhost:3306/bumdesbarang";
                 String user = "root";
                 String password = "";
 
@@ -34,14 +34,15 @@ public class Koneksi {
                 connection = (Connection) DriverManager.getConnection(url, user, password);
 
                 System.out.println("Koneksi sukses");
-                
-                JOptionPane.showMessageDialog(null, "Koneksi Berhasil");
 
-            } catch (SQLException sqle) {
+                //JOptionPane.showMessageDialog(null, "Koneksi Berhasil");
+
+            } catch (SQLException e) {
 
                 //System.out.println("Koneksi gagal dilakukan");
-                
-                JOptionPane.showMessageDialog(null, sqle.toString());
+                //JOptionPane.showMessageDialog(null, e.toString());
+
+                JOptionPane.showMessageDialog(null, "Error dikit");
 
             }
         }

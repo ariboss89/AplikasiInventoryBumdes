@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.ReportDao;
+import DaoBumdes.ReportDao;
 import Model.tb_login;
 import javax.swing.JOptionPane;
 
@@ -24,7 +24,7 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(this);
         setExtendedState(MAXIMIZED_BOTH);
-        Check();
+        //Check();
     }
 
     private void Check(){
@@ -222,7 +222,7 @@ public class MainForm extends javax.swing.JFrame {
         int ok = JOptionPane.showConfirmDialog(null, "Apakah anda akan logout ?", "Logout", JOptionPane.YES_NO_OPTION);
         
         if(ok==0){
-            JOptionPane.showMessageDialog(null, "GOODBYE "+ tb_login.getUsername().toUpperCase());
+           // JOptionPane.showMessageDialog(null, "GOODBYE "+ tb_login.getUsername().toUpperCase());
             
             System.exit(0);
         }

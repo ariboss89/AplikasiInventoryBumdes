@@ -4,8 +4,8 @@
  */
 package View;
 
-import Dao.BarangMasukDao;
-import Dao.ReportDao;
+import DaoBumdes.BarangMasukDao;
+import DaoBumdes.ReportDao;
 import Koneksi.Koneksi;
 import Model.tb_login;
 import java.sql.Date;

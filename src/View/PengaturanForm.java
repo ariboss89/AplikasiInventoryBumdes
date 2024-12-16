@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.PenggunaDao;
+import DaoBumdes.PenggunaDao;
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
 import Model.tb_login;

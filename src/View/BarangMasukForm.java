@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.BarangMasukDao;
+import DaoBumdes.BarangMasukDao;
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
 import Model.tb_model;

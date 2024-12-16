@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package DaoBumdes;
 
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
@@ -26,7 +26,7 @@ public class SatuanDao extends tb_satuan {
        con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "insert into tb_satuan(nama_satuan)values('" + nama + "')";
             st.executeUpdate(query);
             st.close();
@@ -41,7 +41,7 @@ public class SatuanDao extends tb_satuan {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "update tb_satuan set nama_satuan='" + nama + "' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
@@ -56,7 +56,7 @@ public class SatuanDao extends tb_satuan {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "delete from tb_satuan where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
@@ -75,7 +75,7 @@ public class SatuanDao extends tb_satuan {
         Connect();
         int jumlahBaris = 0;
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "SELECT COUNT(Id) AS Jumlah FROM tb_satuan";
             res = st.executeQuery(query);
             if (res.next()) {

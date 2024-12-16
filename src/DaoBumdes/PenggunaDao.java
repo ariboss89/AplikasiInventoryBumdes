@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package DaoBumdes;
 
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
@@ -26,7 +26,7 @@ public class PenggunaDao {
        con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "insert into tb_pengguna(username, password, role, nama, kontak)values('" + username + "', MD5 ('"+password+"'), '"+role+"', '"+nama+"', '"+kontak+"')";
             st.executeUpdate(query);
             st.close();
@@ -41,7 +41,7 @@ public class PenggunaDao {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "update tb_pengguna set password= MD5('" + password + "'), nama='"+nama+"', kontak='"+kontak+"' where username = '" + username + "'";
             st.executeUpdate(query);
             st.close();
@@ -56,7 +56,7 @@ public class PenggunaDao {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "delete from tb_pengguna where ysername = '" + username + "'";
             st.executeUpdate(query);
             st.close();
@@ -75,7 +75,7 @@ public class PenggunaDao {
         Connect();
         int jumlahBaris = 0;
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "SELECT COUNT(username) AS Jumlah FROM tb_pengguna";
             res = st.executeQuery(query);
             if (res.next()) {

@@ -4,8 +4,8 @@
  */
 package View;
 
-import Dao.BarangDao;
-import Dao.PenggunaDao;
+import DaoBumdes.BarangDao;
+import DaoBumdes.PenggunaDao;
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
 import Model.tb_model;

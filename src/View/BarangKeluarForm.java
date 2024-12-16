@@ -4,8 +4,8 @@
  */
 package View;
 
-import Dao.BarangKeluarDao;
-import Dao.ReportDao;
+import DaoBumdes.BarangKeluarDao;
+import DaoBumdes.ReportDao;
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
 import com.mysql.jdbc.Connection;

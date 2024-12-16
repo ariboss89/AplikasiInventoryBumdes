@@ -4,7 +4,7 @@
  */
 package View;
 
-import Dao.BarangDao;
+import DaoBumdes.BarangDao;
 import Model.tb_model;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

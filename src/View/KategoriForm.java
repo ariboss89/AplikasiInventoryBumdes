@@ -4,8 +4,8 @@
  */
 package View;
 
-import Dao.BarangDao;
-import Dao.KategoriDao;
+import DaoBumdes.BarangDao;
+import DaoBumdes.KategoriDao;
 import Model.tb_model;
 import javax.swing.JOptionPane;
 
@@ -214,6 +214,7 @@ void Refresh(){
 
         if(ok==0){
             kd.Delete(kd.getId());
+            Refresh();
         }
 
     }//GEN-LAST:event_btnDeleteActionPerformed

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package DaoBumdes;
 
 import Koneksi.Koneksi;
 import static Koneksi.Koneksi.Connect;
@@ -26,11 +26,11 @@ public class KategoriDao extends tb_kategori {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "insert into tb_kategori(nama_kategori)values('" + nama + "')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+//            con.conn.close();
             JOptionPane.showMessageDialog(null, "Data kategori berhasil di tambahkan");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data kategori gagal di tambahkan");
@@ -41,11 +41,11 @@ public class KategoriDao extends tb_kategori {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "update tb_kategori set nama_kategori='" + nama + "' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data kategori berhasil di ubah");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data kategori gagal di ubah");
@@ -56,11 +56,11 @@ public class KategoriDao extends tb_kategori {
         con = new Koneksi();
         Connect();
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "delete from tb_kategori where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data barang berhasil di hapus");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data barang gagal di hapus");
@@ -75,7 +75,7 @@ public class KategoriDao extends tb_kategori {
         Connect();
         int jumlahBaris = 0;
         try {
-            st = con.conn.createStatement();
+            st = Connect().createStatement();
             query = "SELECT COUNT(Id) AS Jumlah FROM tb_kategori";
             res = st.executeQuery(query);
             if (res.next()) {
@@ -99,7 +99,7 @@ public class KategoriDao extends tb_kategori {
                 }
             }
             st.close();
-            con.conn.close();
+//            con.conn.close();
         } catch (SQLException e) {
             System.err.println("SQLException : " + e.getMessage());
         }
