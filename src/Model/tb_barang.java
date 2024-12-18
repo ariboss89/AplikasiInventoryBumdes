@@ -14,7 +14,29 @@ public class tb_barang {
     private String kategori;
     private int stok;
     private int harga;
+    
+    private static int IdBarang;
+    private static String NamaBarang;
 
+    public static int getIdBarang() {
+        return IdBarang;
+    }
+
+    public static void setIdBarang(int IdBarang) {
+        tb_barang.IdBarang = IdBarang;
+    }
+
+    public static String getNamaBarang() {
+        return NamaBarang;
+    }
+
+    public static void setNamaBarang(String NamaBarang) {
+        tb_barang.NamaBarang = NamaBarang;
+    }
+
+    
+    
+    
     public int getHarga() {
         return harga;
     }

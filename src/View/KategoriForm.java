@@ -226,7 +226,7 @@ void Refresh(){
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        res = kd.ShowDataBarang();
+        res = kd.ShowDataKategori();
         tbl.SetTabel(jTable1, res, namaKolom, jmlKolom, lebar);
     }//GEN-LAST:event_formWindowActivated
 

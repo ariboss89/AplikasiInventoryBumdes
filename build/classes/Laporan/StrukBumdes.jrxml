@@ -10,7 +10,7 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="758"/>
 	<parameter name="idorder" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT a.Id, a.jumlah_barang, a.total_bayar, a.bayar, a.kembali, a.tanggal, a.kasir, b.nama_barang, b.jumlah, b.harga_barang, b.subtotal
+		<![CDATA[SELECT a.Id, a.jumlah_barang, a.total_bayar, a.bayar, a.kembali, a.tanggal, a.kasir, a.nama_pelanggan, b.nama_barang, b.jumlah, b.harga_barang, b.subtotal
 FROM tb_barangkeluar a  INNER JOIN dt_barangkeluar b ON a.Id = b.idbarang_keluar WHERE a.Id =  $P{idorder}]]>
 	</queryString>
 	<field name="Id" class="java.lang.String">
@@ -46,6 +46,11 @@ FROM tb_barangkeluar a  INNER JOIN dt_barangkeluar b ON a.Id = b.idbarang_keluar
 	<field name="kasir" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="kasir"/>
 		<property name="com.jaspersoft.studio.field.label" value="kasir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_barangkeluar"/>
+	</field>
+	<field name="nama_pelanggan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_pelanggan"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_pelanggan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tb_barangkeluar"/>
 	</field>
 	<field name="nama_barang" class="java.lang.String">
@@ -84,14 +89,14 @@ FROM tb_barangkeluar a  INNER JOIN dt_barangkeluar b ON a.Id = b.idbarang_keluar
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[STRUK PEMBAYARAN]]></text>
+				<text><![CDATA[BUMDES BINA SEJAHTERA]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="127" splitType="Stretch">
+		<band height="140" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="120" uuid="3e4cfc58-e934-4ef1-ace0-2a5bf88baf14"/>
+				<reportElement x="0" y="0" width="555" height="140" uuid="3e4cfc58-e934-4ef1-ace0-2a5bf88baf14"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="10" y="10" width="190" height="30" uuid="2ffd8430-27c2-47dc-8ce1-af52a18f5a84">
@@ -136,7 +141,7 @@ FROM tb_barangkeluar a  INNER JOIN dt_barangkeluar b ON a.Id = b.idbarang_keluar
 				</textElement>
 				<text><![CDATA[  TANGGAL]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="yyyy-MM-dd">
 				<reportElement x="200" y="40" width="339" height="30" uuid="287fe497-5d0e-4dad-82e8-e3c6e649c0b9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659dc9f1-1177-43f2-92fb-4591cf3aba81"/>
 				</reportElement>
@@ -176,6 +181,34 @@ FROM tb_barangkeluar a  INNER JOIN dt_barangkeluar b ON a.Id = b.idbarang_keluar
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{kasir}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="100" width="190" height="30" uuid="964fe637-108f-4762-9656-3f8564c6c81e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659dc9f1-1177-43f2-92fb-4591cf3aba81"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  NAMA PELANGGAN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="100" width="339" height="30" uuid="f8c9edd7-f905-4f6b-bafd-366d04fdaacb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659dc9f1-1177-43f2-92fb-4591cf3aba81"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nama_pelanggan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

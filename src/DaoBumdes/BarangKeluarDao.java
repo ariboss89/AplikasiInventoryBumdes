@@ -34,38 +34,38 @@ public class BarangKeluarDao extends dt_barangkeluar {
             query = "update tb_barang set stok='" + stok + "' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Stok barang gagal di ubah");
         }
     }
 
-    public void AddToCart(int idBarang, String idKeluar, String barang, Date tanggal, int jumlah, double harga, double subtotal) {
+    public void AddToCart(int idBarang, String idKeluar, String barang, Date tanggal, int jumlah, double harga, double subtotal, double modal) {
         con = new Koneksi();
         Connect();
         try {
             st = Connect().createStatement();
-            query = "insert into dt_barangkeluar(idbarang, idbarang_keluar,  nama_barang, tanggal_keluar, jumlah, harga_barang, subtotal)"
-                    + "values('" + idBarang + "', '" + idKeluar + "', '" + barang + "', '" + tanggal + "', '" + jumlah + "','" + harga + "', '" + subtotal + "')";
+            query = "insert into dt_barangkeluar(idbarang, idbarang_keluar,  nama_barang, tanggal_keluar, jumlah, harga_barang, subtotal, modal)"
+                    + "values('" + idBarang + "', '" + idKeluar + "', '" + barang + "', '" + tanggal + "', '" + jumlah + "','" + harga + "', '" + subtotal + "','"+modal+"')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Barang ditambahkan ke keranjang !!");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Barang gagal ditambahkan ke keranjang !!");
         }
     }
 
-    public void SelesaiBelanja(String Id, double jmlBarang, double totBayar, double bayar, double kembali, Date tanggal, String kasir) {
+    public void SelesaiBelanja(String Id, double jmlBarang, double totBayar, double bayar, double kembali, Date tanggal, String kasir, String namaPelanggan, double totModal) {
         con = new Koneksi();
         Connect();
         try {
             st = Connect().createStatement();
-            query = "insert into tb_barangkeluar(Id, jumlah_barang,  total_bayar, bayar, kembali, tanggal, kasir)"
-                    + "values('" + Id + "', '" + jmlBarang + "', '" + totBayar + "', '" + bayar + "', '" + kembali + "','" + tanggal + "', '"+kasir+"')";
+            query = "insert into tb_barangkeluar(Id, jumlah_barang,  total_bayar, bayar, kembali, tanggal, kasir, nama_pelanggan, total_modal)"
+                    + "values('" + Id + "', '" + jmlBarang + "', '" + totBayar + "', '" + bayar + "', '" + kembali + "','" + tanggal + "', '"+kasir+"', '"+namaPelanggan+"', '"+totModal+"')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Orderan Selesai");
 
         } catch (SQLException e) {
@@ -88,7 +88,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
             }
             query = "select *from dt_barangkeluar WHERE idbarang_keluar='" + idPesanan + "'";
             res = st.executeQuery(query);
-            data = new String[jumlahBaris][7];
+            data = new String[jumlahBaris][8];
             int r = 0;
             while (res.next()) {
                 data[r][0] = res.getString("Id");
@@ -98,18 +98,19 @@ public class BarangKeluarDao extends dt_barangkeluar {
                 data[r][4] = res.getString("jumlah");
                 data[r][5] = res.getString("harga_barang");
                 data[r][6] = res.getString("subtotal");
+                data[r][7] = res.getString("modal");
                 r++;
             }
             int jmlBaris = r;
             String[][] tmpArray = data;
-            data = new String[jmlBaris][7];
+            data = new String[jmlBaris][8];
             for (r = 0; r < jmlBaris; r++) {
-                for (int c = 0; c < 7; c++) {
+                for (int c = 0; c < 8; c++) {
                     data[r][c] = tmpArray[r][c];
                 }
             }
             st.close();
-            con.conn.close();
+            //con.conn.close();
         } catch (SQLException e) {
             System.err.println("SQLException : " + e.getMessage());
         }
@@ -131,6 +132,22 @@ public class BarangKeluarDao extends dt_barangkeluar {
 
         return dataBarang;
     }
+    
+    public ArrayList<String> ListPelanggan() {
+        ArrayList<String> dataBarang = new ArrayList<>();
+        con = new Koneksi();
+        try {
+            st = Connect().createStatement();
+            res = st.executeQuery("SELECT *FROM tb_pelanggan");
+            while (res.next()) {
+                dataBarang.add(res.getString("nama_pelanggan"));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Data gagal di request !!");
+        }
+
+        return dataBarang;
+    }
 
     public void Delete(int id) {
         con = new Koneksi();
@@ -140,7 +157,7 @@ public class BarangKeluarDao extends dt_barangkeluar {
             query = "delete from tb_barangkeluar where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data berhasil di hapus");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data gagal di hapus");
@@ -190,11 +207,87 @@ public class BarangKeluarDao extends dt_barangkeluar {
 
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Stok barang gagal di ubah");
         }
+    }
+    
+    public String[][] ShowAllOrder() {
+        res = null;
+        String[][] data = null;
+        con = new Koneksi();
+        Connect();
+        int jumlahBaris = 0;
+        try {
+            st = Connect().createStatement();
+            query = "SELECT COUNT(Id) AS Jumlah FROM tb_barangkeluar";
+            res = st.executeQuery(query);
+            if (res.next()) {
+                jumlahBaris = res.getInt("Jumlah");
+            }
+            query = "select *from tb_barangkeluar";
+            res = st.executeQuery(query);
+            data = new String[jumlahBaris][2];
+            int r = 0;
+            while (res.next()) {
+                data[r][0] = res.getString("Id");
+                data[r][1] = res.getString("nama_pelanggan");
+                r++;
+            }
+            int jmlBaris = r;
+            String[][] tmpArray = data;
+            data = new String[jmlBaris][2];
+            for (r = 0; r < jmlBaris; r++) {
+                for (int c = 0; c < 2; c++) {
+                    data[r][c] = tmpArray[r][c];
+                }
+            }
+            st.close();
+            //con.conn.close();
+        } catch (SQLException e) {
+            System.err.println("SQLException : " + e.getMessage());
+        }
+        return data;
+    }
+    
+    public String[][] ShowOrderById(String idPesanan) {
+        res = null;
+        String[][] data = null;
+        con = new Koneksi();
+        Connect();
+        int jumlahBaris = 0;
+        try {
+            st = Connect().createStatement();
+            query = "SELECT COUNT(Id) AS Jumlah FROM tb_barangkeluar WHERE Id like '%"+idPesanan+"%'";
+            res = st.executeQuery(query);
+            if (res.next()) {
+                jumlahBaris = res.getInt("Jumlah");
+            }
+            query = "select *from tb_barangkeluar WHERE Id like '%"+idPesanan+"%'";
+            res = st.executeQuery(query);
+            data = new String[jumlahBaris][2];
+            int r = 0;
+            while (res.next()) {
+                data[r][0] = res.getString("Id");
+                data[r][1] = res.getString("nama_pelanggan");
+                r++;
+            }
+            int jmlBaris = r;
+            String[][] tmpArray = data;
+            data = new String[jmlBaris][2];
+            for (r = 0; r < jmlBaris; r++) {
+                for (int c = 0; c < 2; c++) {
+                    data[r][c] = tmpArray[r][c];
+                }
+            }
+            st.close();
+            //con.conn.close();
+        } catch (SQLException e) {
+            System.err.println("SQLException : " + e.getMessage());
+        }
+        return data;
     }
 
 }

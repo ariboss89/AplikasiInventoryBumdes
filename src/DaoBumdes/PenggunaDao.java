@@ -30,7 +30,7 @@ public class PenggunaDao {
             query = "insert into tb_pengguna(username, password, role, nama, kontak)values('" + username + "', MD5 ('"+password+"'), '"+role+"', '"+nama+"', '"+kontak+"')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data pengguna berhasil di tambahkan");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data pengguna gagal di tambahkan");
@@ -45,7 +45,7 @@ public class PenggunaDao {
             query = "update tb_pengguna set password= MD5('" + password + "'), nama='"+nama+"', kontak='"+kontak+"' where username = '" + username + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data pengguna berhasil di ubah");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data pengguna gagal di ubah");
@@ -57,10 +57,10 @@ public class PenggunaDao {
         Connect();
         try {
             st = Connect().createStatement();
-            query = "delete from tb_pengguna where ysername = '" + username + "'";
+            query = "delete from tb_pengguna where username = '" + username + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data pengguna berhasil di hapus");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data pengguna gagal di hapus");
@@ -101,7 +101,7 @@ public class PenggunaDao {
                 }
             }
             st.close();
-            con.conn.close();
+            //con.conn.close();
         } catch (SQLException e) {
             System.err.println("SQLException : " + e.getMessage());
         }

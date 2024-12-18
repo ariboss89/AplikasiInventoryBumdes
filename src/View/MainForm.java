@@ -44,16 +44,22 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        menuKategori = new javax.swing.JMenuItem();
-        menuSatuan = new javax.swing.JMenuItem();
         menuBarang = new javax.swing.JMenuItem();
         menuBarangMasuk = new javax.swing.JMenuItem();
+        menuKategori = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuPengguna = new javax.swing.JMenuItem();
+        menuSatuan = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         menuPembelian = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuPassword = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
@@ -74,32 +80,6 @@ public class MainForm extends javax.swing.JFrame {
 
         menuFile.setText("INPUT");
 
-        menuKategori.setText("KATEGORI");
-        menuKategori.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuKategoriMouseClicked(evt);
-            }
-        });
-        menuKategori.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuKategoriActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuKategori);
-
-        menuSatuan.setText("SATUAN");
-        menuSatuan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuSatuanMouseClicked(evt);
-            }
-        });
-        menuSatuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSatuanActionPerformed(evt);
-            }
-        });
-        menuFile.add(menuSatuan);
-
         menuBarang.setText("BARANG");
         menuBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +96,27 @@ public class MainForm extends javax.swing.JFrame {
         });
         menuFile.add(menuBarangMasuk);
 
+        menuKategori.setText("KATEGORI");
+        menuKategori.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuKategoriMouseClicked(evt);
+            }
+        });
+        menuKategori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuKategoriActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuKategori);
+
+        jMenuItem2.setText("PELANGGAN");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuFile.add(jMenuItem2);
+
         menuPengguna.setText("PENGGUNA");
         menuPengguna.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +124,27 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         menuFile.add(menuPengguna);
+
+        menuSatuan.setText("SATUAN");
+        menuSatuan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSatuanMouseClicked(evt);
+            }
+        });
+        menuSatuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSatuanActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuSatuan);
+
+        jMenuItem1.setText("SUPPLIER");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuFile.add(jMenuItem1);
 
         jMenuBar1.add(menuFile);
 
@@ -140,14 +162,6 @@ public class MainForm extends javax.swing.JFrame {
 
         jMenu2.setText("LAPORAN");
 
-        jMenuItem6.setText("LAPORAN BARANG");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
-
         jMenuItem4.setText("LAPORAN BARANG MASUK");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +169,41 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem4);
+
+        jMenuItem6.setText("LAPORAN STOK BARANG KESELURUHAN");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem8.setText("LAPORAN TRANSAKSI KESELURUHAN");
+        jMenu2.add(jMenuItem8);
+
+        jMenuItem5.setText("LAPORAN TRANSAKSI PER BARANG");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem7.setText("LAPORAN TRANSAKSI PER ORDERAN");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        jMenuItem3.setText("LAPORAN TRANSAKSI PER PELANGGAN");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
 
@@ -213,7 +262,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        new LaporanForm("Masuk").show();
+        new LaporanForm().show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -259,6 +308,31 @@ public class MainForm extends javax.swing.JFrame {
         new PenggunaForm().show();
     }//GEN-LAST:event_menuPenggunaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        new SupplierForm().show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new PelangganForm().show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        new LaporanByPelangganForm().show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        new LaporanByBarangForm().show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -299,8 +373,14 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem menuBarang;
     private javax.swing.JMenuItem menuBarangMasuk;

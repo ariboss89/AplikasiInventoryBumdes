@@ -30,7 +30,7 @@ public class SatuanDao extends tb_satuan {
             query = "insert into tb_satuan(nama_satuan)values('" + nama + "')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data satuan berhasil di tambahkan");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data satuan gagal di tambahkan");
@@ -45,7 +45,7 @@ public class SatuanDao extends tb_satuan {
             query = "update tb_satuan set nama_satuan='" + nama + "' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data satuan berhasil di ubah");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data satuan gagal di ubah");
@@ -60,7 +60,7 @@ public class SatuanDao extends tb_satuan {
             query = "delete from tb_satuan where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data satuan berhasil di hapus");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data satuan gagal di hapus");
@@ -99,7 +99,7 @@ public class SatuanDao extends tb_satuan {
                 }
             }
             st.close();
-            con.conn.close();
+//            con.conn.close();
         } catch (SQLException e) {
             System.err.println("SQLException : " + e.getMessage());
         }

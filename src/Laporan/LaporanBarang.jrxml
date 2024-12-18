@@ -45,29 +45,43 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="89" splitType="Stretch">
+		<band height="80" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="70" uuid="f3c3fd85-5288-4a7d-b4c3-f7b965472c45"/>
+				<reportElement x="0" y="0" width="555" height="80" uuid="18bd04f4-4666-4a99-8320-fb9a14fc5810"/>
 				<graphicElement>
 					<pen lineStyle="Double"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="10" y="12" width="529" height="48" uuid="b512d8b2-7b35-4c3e-96fb-ffe94280af3e"/>
+				<reportElement x="11" y="15" width="535" height="50" uuid="00f36f55-1cb9-4e41-91d5-6dd760c7cb1b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[LAPORAN STOK BARANG]]></text>
+				<text><![CDATA[BUMDES BINA SEJAHTERA]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="20" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="-1" width="555" height="51" uuid="f3c3fd85-5288-4a7d-b4c3-f7b965472c45"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="11" width="529" height="29" uuid="b512d8b2-7b35-4c3e-96fb-ffe94280af3e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[LAPORAN STOK BARANG KESELURUHAN]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="45" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="15" width="176" height="30" uuid="f37c6f44-590f-4b02-a1ed-e4b56977baa6">
+				<reportElement x="0" y="0" width="176" height="30" uuid="f37c6f44-590f-4b02-a1ed-e4b56977baa6">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="659dc9f1-1177-43f2-92fb-4591cf3aba81"/>
 				</reportElement>
 				<box>
@@ -82,7 +96,7 @@
 				<text><![CDATA[NAMA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="176" y="15" width="100" height="30" uuid="92ae7975-5c05-4f86-8f23-c96cbdfdc90a">
+				<reportElement x="176" y="0" width="100" height="30" uuid="92ae7975-5c05-4f86-8f23-c96cbdfdc90a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca0812cb-3f51-45d2-8579-79aa9daba231"/>
 				</reportElement>
 				<box>
@@ -97,7 +111,7 @@
 				<text><![CDATA[KATEGORI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="276" y="15" width="100" height="30" uuid="8cad06db-62be-4e71-b03d-d38d9a8ff0c4">
+				<reportElement x="276" y="0" width="100" height="30" uuid="8cad06db-62be-4e71-b03d-d38d9a8ff0c4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f9bc566-78bd-4bc6-a247-6ececb5a5b0b"/>
 				</reportElement>
 				<box>
@@ -112,7 +126,7 @@
 				<text><![CDATA[HARGA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="15" width="100" height="30" uuid="f0c42b0f-28af-4985-988d-ca75dcc6c049">
+				<reportElement x="455" y="0" width="100" height="30" uuid="f0c42b0f-28af-4985-988d-ca75dcc6c049">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d59c629-c4f8-44fd-a6aa-90792844e5a0"/>
 				</reportElement>
 				<box>
@@ -127,7 +141,7 @@
 				<text><![CDATA[SATUAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="376" y="15" width="79" height="30" uuid="8f0ffa7c-62ec-4709-b2c7-7b6f4ffd9997">
+				<reportElement x="376" y="0" width="79" height="30" uuid="8f0ffa7c-62ec-4709-b2c7-7b6f4ffd9997">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b1d83abb-6b1f-476e-9bfa-67f66874240d"/>
 				</reportElement>
 				<box padding="5">
@@ -213,32 +227,32 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="90" splitType="Stretch"/>
+		<band height="9" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="30" splitType="Stretch"/>
+		<band height="14" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="240" splitType="Stretch">
+		<band height="169" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="70" width="555" height="169" uuid="80b733d3-1515-4315-9110-294cc6558003"/>
+				<reportElement x="0" y="0" width="555" height="169" uuid="80b733d3-1515-4315-9110-294cc6558003"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="303" y="90" width="97" height="20" uuid="9caa047a-b1bf-40c6-a13d-8d48d1507de1"/>
+				<reportElement x="303" y="20" width="97" height="20" uuid="9caa047a-b1bf-40c6-a13d-8d48d1507de1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Mengetahui,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="359" y="200" width="113" height="20" uuid="a267f831-c724-48d0-80b8-545103350f17"/>
+				<reportElement x="359" y="130" width="113" height="20" uuid="a267f831-c724-48d0-80b8-545103350f17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIREKTUR]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
-				<reportElement x="400" y="90" width="145" height="20" uuid="39ceb77f-0419-488a-bd86-88c367323072"/>
+				<reportElement x="400" y="20" width="145" height="20" uuid="39ceb77f-0419-488a-bd86-88c367323072"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>

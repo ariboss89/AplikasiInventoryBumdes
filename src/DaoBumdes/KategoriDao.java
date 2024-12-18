@@ -61,13 +61,13 @@ public class KategoriDao extends tb_kategori {
             st.executeUpdate(query);
             st.close();
             //con.conn.close();
-            JOptionPane.showMessageDialog(null, "Data barang berhasil di hapus");
+            JOptionPane.showMessageDialog(null, "Data kategori berhasil di hapus");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Data barang gagal di hapus");
+            JOptionPane.showMessageDialog(null, "Data kategori gagal di hapus");
         }
     }
 
-    public String[][] ShowDataBarang() {
+    public String[][] ShowDataKategori() {
 
         res = null;
         String[][] data = null;
@@ -83,7 +83,7 @@ public class KategoriDao extends tb_kategori {
             }
             query = "select *from tb_kategori";
             res = st.executeQuery(query);
-            data = new String[jumlahBaris][6];
+            data = new String[jumlahBaris][2];
             int r = 0;
             while (res.next()) {
                 data[r][0] = res.getString("Id");

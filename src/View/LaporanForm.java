@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,12 +27,12 @@ public class LaporanForm extends javax.swing.JFrame {
     Date tanggal;
     ReportDao rd = new ReportDao();
 
-    public LaporanForm(String Ket) {
+    public LaporanForm() {
         initComponents();
         setLocationRelativeTo(this);
         ShowBarang();
 
-        tb_login.setKet(Ket);
+        //tb_login.setKet(Ket);
         Refresh();
     }
 
@@ -155,12 +156,16 @@ public class LaporanForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tglAwal = (dateAll.format(jDateChooser1.getDate()));
         String tglAkhir = (dateAll.format(jDateChooser2.getDate()));
-
-        if (tb_login.getKet() == "Masuk") {
-            rd.CetakLaporanBarangMasuk(cbBarang.getSelectedItem().toString(), tglAwal, tglAkhir);
-            Refresh();
+        
+        if (cbBarang.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih barang !!");
+        } else if (jDateChooser1.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih tanggal awal !!");
+        } else if (jDateChooser2.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih tanggal akhir !!");
         } else {
-            rd.CetakLaporanBarangKeluar(cbBarang.getSelectedItem().toString(),tglAwal, tglAkhir);
+
+            rd.CetakLaporanBarangMasuk(cbBarang.getSelectedItem().toString(),tglAwal, tglAkhir);
             Refresh();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -201,7 +206,7 @@ public class LaporanForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                new LaporanForm(tb_login.getKet()).setVisible(true);
+                new LaporanForm().setVisible(true);
             }
         });
     }

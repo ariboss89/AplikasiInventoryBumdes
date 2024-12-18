@@ -43,23 +43,6 @@ public class ReportDao {
         }
     }
     
-    public void CetakStruk(String IdOrder) {
-        
-        con = new Koneksi();
-
-        try {
-            HashMap parameter = new HashMap();
-            File file = new File("src/Laporan/StrukBumdes.jasper");
-            parameter.put("idorder", IdOrder);
-            JasperReport jp = (JasperReport) JRLoader.loadObject(file);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jp, parameter, Connect());
-            JasperViewer.viewReport(jasperPrint, false);
-            JasperViewer.setDefaultLookAndFeelDecorated(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
     public void CetakLaporanBarangMasuk(String barang, String tglAwal, String tglAkhir) {
         
         con = new Koneksi();
@@ -79,16 +62,70 @@ public class ReportDao {
         }
     }
     
-    public void CetakLaporanBarangKeluar(String barang, String tglAwal, String tglAkhir) {
+    public void CetakLaporanPelanggan(String pelanggan, String tglAwal, String tglAkhir) {
         
         con = new Koneksi();
 
         try {
             HashMap parameter = new HashMap();
-            File file = new File("src/Laporan/LaporanBarangKeluar.jasper");
-            parameter.put("barang", barang);
-            parameter.put("tglAwal", tglAwal);
-            parameter.put("tglAkhir", tglAkhir);
+            File file = new File("src/Laporan/LaporanTransaksiPerPelanggan.jasper");
+            parameter.put("pelanggan", pelanggan);
+            parameter.put("tanggalawal", tglAwal);
+            parameter.put("tanggalakhir", tglAkhir);
+            JasperReport jp = (JasperReport) JRLoader.loadObject(file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jp, parameter, Connect());
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void CetakLaporanPerBarang(String barang, String tglAwal, String tglAkhir) {
+        
+        con = new Koneksi();
+
+        try {
+            HashMap parameter = new HashMap();
+            File file = new File("src/Laporan/LaporanTransaksiPerBarang.jasper");
+            parameter.put("barang",  barang);
+            parameter.put("tanggalawal", tglAwal);
+            parameter.put("tanggalakhir", tglAkhir);
+            JasperReport jp = (JasperReport) JRLoader.loadObject(file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jp, parameter, Connect());
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void CetakLaporanTransaksi(String tglAwal, String tglAkhir) {
+        
+        con = new Koneksi();
+
+        try {
+            HashMap parameter = new HashMap();
+            File file = new File("src/Laporan/LaporanTransaksi.jasper");
+            parameter.put("tanggalawal", tglAwal);
+            parameter.put("tanggalakhir", tglAkhir);
+            JasperReport jp = (JasperReport) JRLoader.loadObject(file);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jp, parameter, Connect());
+            JasperViewer.viewReport(jasperPrint, false);
+            JasperViewer.setDefaultLookAndFeelDecorated(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void CetakStruk(String IdOrder) {
+        
+        con = new Koneksi();
+
+        try {
+            HashMap parameter = new HashMap();
+            File file = new File("src/Laporan/StrukBumdes.jasper");
+            parameter.put("idorder", IdOrder);
             JasperReport jp = (JasperReport) JRLoader.loadObject(file);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jp, parameter, Connect());
             JasperViewer.viewReport(jasperPrint, false);

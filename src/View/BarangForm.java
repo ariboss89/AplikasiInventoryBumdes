@@ -5,7 +5,9 @@
 package View;
 
 import DaoBumdes.BarangDao;
+import Model.tb_barang;
 import Model.tb_model;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import javax.swing.JOptionPane;
@@ -25,9 +27,9 @@ public class BarangForm extends javax.swing.JFrame {
     tb_model tbl = new tb_model();
 
     private String res[][];
-    String[] namaKolom = {"Id", "Nama Barang", "Kategori", "Harga", "Satuan", "Stok"};
+    String[] namaKolom = {"Id", "Nama Barang", "Kategori", "Harga Beli", "Harga Jual", "Satuan", "Stok"};
     int jmlKolom = namaKolom.length;
-    int[] lebar = {200, 300, 200, 300, 200, 300};
+    int[] lebar = {200, 300, 200, 300,300, 200, 300};
 
     DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
     DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
@@ -50,7 +52,7 @@ public class BarangForm extends javax.swing.JFrame {
         txtBarang.requestFocus();
         txtBarang.setText("");
         cbKategori.setSelectedIndex(0);
-        txtHarga.setText("0");
+        txtHargaBeli.setText("0");
         txtJumlah.setText("0");
         btnSave.setEnabled(true);
         btnUpdate.setEnabled(false);
@@ -88,7 +90,7 @@ public class BarangForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbKategori = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        txtHarga = new javax.swing.JTextField();
+        txtHargaBeli = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtJumlah = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -99,7 +101,10 @@ public class BarangForm extends javax.swing.JFrame {
         btnNew = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         cbSatuan = new javax.swing.JComboBox<>();
-        txtRupiah = new javax.swing.JTextField();
+        txtRupiahBeli = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtHargaJual = new javax.swing.JTextField();
+        txtRupiahJual = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -119,12 +124,15 @@ public class BarangForm extends javax.swing.JFrame {
         cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PILIH" }));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel3.setText("HARGA BARANG");
+        jLabel3.setText("HARGA BELI BARANG");
 
-        txtHarga.setText("0");
-        txtHarga.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtHargaBeli.setText("0");
+        txtHargaBeli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtHargaKeyReleased(evt);
+                txtHargaBeliKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHargaBeliKeyTyped(evt);
             }
         });
 
@@ -189,11 +197,32 @@ public class BarangForm extends javax.swing.JFrame {
 
         cbSatuan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PILIH" }));
 
-        txtRupiah.setEditable(false);
-        txtRupiah.setText("0");
-        txtRupiah.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtRupiahBeli.setEditable(false);
+        txtRupiahBeli.setText("0");
+        txtRupiahBeli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtRupiahKeyReleased(evt);
+                txtRupiahBeliKeyReleased(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel6.setText("HARGA JUAL BARANG");
+
+        txtHargaJual.setText("0");
+        txtHargaJual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtHargaJualKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHargaJualKeyTyped(evt);
+            }
+        });
+
+        txtRupiahJual.setEditable(false);
+        txtRupiahJual.setText("0");
+        txtRupiahJual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtRupiahJualKeyReleased(evt);
             }
         });
 
@@ -206,8 +235,10 @@ public class BarangForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtBarang)
                     .addComponent(cbKategori, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtHarga)
-                    .addComponent(txtRupiah)
+                    .addComponent(txtHargaBeli)
+                    .addComponent(txtRupiahBeli)
+                    .addComponent(txtHargaJual)
+                    .addComponent(txtRupiahJual)
                     .addComponent(cbSatuan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,6 +254,7 @@ public class BarangForm extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
+                            .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -247,9 +279,15 @@ public class BarangForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtRupiah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRupiahBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtHargaJual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtRupiahJual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -288,11 +326,14 @@ public class BarangForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Silahkan input nama barang !!");
         } else if (cbKategori.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Silahkan pilih kategori !!");
-        } else if (txtHarga.getText().equals("0")) {
-            JOptionPane.showMessageDialog(null, "Silahkan pilih kategori !!");
-        } else {
+        } else if (txtHargaBeli.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Silahkan input harga beli !!");
+        }
+        else if (txtHargaJual.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Silahkan input harga jual !!");
+        }else {
 
-            bd.SaveBarang(txtBarang.getText(), cbKategori.getSelectedItem().toString(), Integer.parseInt(txtHarga.getText()), cbSatuan.getSelectedItem().toString());
+            bd.SaveBarang(txtBarang.getText(), cbKategori.getSelectedItem().toString(), Integer.parseInt(txtHargaJual.getText()), cbSatuan.getSelectedItem().toString(), Integer.parseInt(txtHargaBeli.getText()));
             Refresh();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -303,10 +344,10 @@ public class BarangForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Silahkan input nama barang !!");
         } else if (cbKategori.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Silahkan pilih kategori !!");
-        } else if (txtHarga.getText().equals("0")) {
+        } else if (txtHargaBeli.getText().equals("0")) {
             JOptionPane.showMessageDialog(null, "Silahkan pilih kategori !!");
         } else {
-            bd.UpdateBarang(txtBarang.getText(), cbKategori.getSelectedItem().toString(), Integer.parseInt(txtHarga.getText()), cbSatuan.getSelectedItem().toString(), bd.getId());
+            bd.UpdateBarang(txtBarang.getText(), cbKategori.getSelectedItem().toString(), Integer.parseInt(txtHargaJual.getText()), Integer.parseInt(txtHargaBeli.getText()), cbSatuan.getSelectedItem().toString(), bd.getId());
             Refresh();
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -318,13 +359,13 @@ public class BarangForm extends javax.swing.JFrame {
         bd.setId(Integer.parseInt(jTable1.getValueAt(row, 0).toString()));
         txtBarang.setText(jTable1.getValueAt(row, 1).toString());
         cbKategori.setSelectedItem(jTable1.getValueAt(row, 2));
-        txtHarga.setText(jTable1.getValueAt(row, 3).toString());
+        txtHargaBeli.setText(jTable1.getValueAt(row, 3).toString());
         cbSatuan.setSelectedItem(jTable1.getValueAt(row, 4));
         btnUpdate.setEnabled(true);
         btnDelete.setEnabled(true);
         btnSave.setEnabled(false);
         
-        txtRupiah.setText(kursIndonesia.format(Double.parseDouble(txtHarga.getText())));
+        txtRupiahBeli.setText(kursIndonesia.format(Double.parseDouble(txtHargaBeli.getText())));
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -336,6 +377,7 @@ public class BarangForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         res = bd.ShowDataBarang();
         tbl.SetTabel(jTable1, res, namaKolom, jmlKolom, lebar);
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -348,15 +390,43 @@ public class BarangForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void txtHargaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaKeyReleased
+    private void txtHargaBeliKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaBeliKeyReleased
         // TODO add your handling code here:
-        txtRupiah.setText(kursIndonesia.format(Double.parseDouble(txtHarga.getText())));
+        txtRupiahBeli.setText(kursIndonesia.format(Double.parseDouble(txtHargaBeli.getText())));
 
-    }//GEN-LAST:event_txtHargaKeyReleased
+    }//GEN-LAST:event_txtHargaBeliKeyReleased
 
-    private void txtRupiahKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRupiahKeyReleased
+    private void txtRupiahBeliKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRupiahBeliKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRupiahKeyReleased
+    }//GEN-LAST:event_txtRupiahBeliKeyReleased
+
+    private void txtHargaBeliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaBeliKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+
+        if (!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE) || (karakter == KeyEvent.VK_ENTER)))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+
+        if (karakter == KeyEvent.VK_SPACE) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHargaBeliKeyTyped
+
+    private void txtHargaJualKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaJualKeyReleased
+        // TODO add your handling code here:
+        txtRupiahJual.setText(kursIndonesia.format(Double.parseDouble(txtHargaJual.getText())));
+    }//GEN-LAST:event_txtHargaJualKeyReleased
+
+    private void txtHargaJualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaJualKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHargaJualKeyTyped
+
+    private void txtRupiahJualKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRupiahJualKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRupiahJualKeyReleased
 
     /**
      * @param args the command line arguments
@@ -413,12 +483,15 @@ public class BarangForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtBarang;
-    private javax.swing.JTextField txtHarga;
+    private javax.swing.JTextField txtHargaBeli;
+    private javax.swing.JTextField txtHargaJual;
     private javax.swing.JTextField txtJumlah;
-    private javax.swing.JTextField txtRupiah;
+    private javax.swing.JTextField txtRupiahBeli;
+    private javax.swing.JTextField txtRupiahJual;
     // End of variables declaration//GEN-END:variables
 }

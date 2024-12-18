@@ -20,6 +20,29 @@ public class dt_barangkeluar {
     private int jumlah;
     private double harga;
     private double subtotal;
+    private double modal;
+    
+    private double hargaBeli;
+
+    public double getHargaBeli() {
+        return hargaBeli;
+    }
+
+    public void setHargaBeli(double hargaBeli) {
+        this.hargaBeli = hargaBeli;
+    }
+    
+    
+
+    public double getModal() {
+        return modal;
+    }
+
+    public void setModal(double modal) {
+        this.modal = modal;
+    }
+    
+    
 
     public int getId() {
         return Id;

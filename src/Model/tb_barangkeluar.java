@@ -18,6 +18,29 @@ public class tb_barangkeluar {
     private double kembalian;
     private double bayar;
     private String kasir;
+    private double totalModal;
+    
+    private static String idOrder;
+
+    public static String getIdOrder() {
+        return idOrder;
+    }
+
+    public static void setIdOrder(String idOrder) {
+        tb_barangkeluar.idOrder = idOrder;
+    }
+    
+    
+
+    public double getTotalModal() {
+        return totalModal;
+    }
+
+    public void setTotalModal(double totalModal) {
+        this.totalModal = totalModal;
+    }
+    
+    
 
     public String getKasir() {
         return kasir;

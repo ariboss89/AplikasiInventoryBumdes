@@ -33,22 +33,22 @@ public class BarangMasukDao extends tb_barangmasuk{
             query = "update tb_barang set stok='"+stok+"' where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Stok barang gagal di ubah");
         }
     }
     
      
-     public void SaveBarangMasuk(String barang, Date tanggal, int jumlah) {
+     public void SaveBarangMasuk(String barang, Date tanggal, int jumlah, String namaSupplier) {
         con = new Koneksi();
         Connect();
         try {
             st = Connect().createStatement();
-            query = "insert into tb_barangmasuk(barang, tanggal, jumlah)values('" + barang + "', '"+tanggal+"', '"+jumlah+"')";
+            query = "insert into tb_barangmasuk(barang, tanggal, jumlah, nama_supplier)values('" + barang + "', '"+tanggal+"', '"+jumlah+"', '"+namaSupplier+"')";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data barang berhasil di tambahkan");
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "Data barang gagal di tambahkan");
@@ -71,25 +71,26 @@ public class BarangMasukDao extends tb_barangmasuk{
             }
             query = "select *from tb_barangmasuk";
             res = st.executeQuery(query);
-            data = new String[jumlahBaris][4];
+            data = new String[jumlahBaris][5];
             int r = 0;
             while (res.next()) {
                 data[r][0] = res.getString("Id");
                 data[r][1] = res.getString("barang");
                 data[r][2] = res.getString("tanggal");
                 data[r][3] = res.getString("jumlah");
+                data[r][4] = res.getString("nama_supplier");
                 r++;
             }
             int jmlBaris = r;
             String[][] tmpArray = data;
-            data = new String[jmlBaris][4];
+            data = new String[jmlBaris][5];
             for (r = 0; r < jmlBaris; r++) {
-                for(int c = 0; c < 4; c++) {
+                for(int c = 0; c < 5; c++) {
                     data[r][c] = tmpArray[r][c];
                 }
             }
             st.close();
-            con.conn.close();
+            //con.conn.close();
         } catch (SQLException e) {
             System.err.println("SQLException : " + e.getMessage());
         }
@@ -112,6 +113,22 @@ public class BarangMasukDao extends tb_barangmasuk{
         return dataBarang;
     }
       
+      public ArrayList<String> ListSupplier(){
+        ArrayList<String> dataSupplier = new ArrayList<>();
+        con= new Koneksi();
+        try{
+            st = Connect().createStatement();
+            res = st.executeQuery("SELECT *FROM tb_supplier");
+            while(res.next()){
+                dataSupplier.add(res.getString("nama_supplier"));
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Data gagal di request !!");
+        }
+        
+        return dataSupplier;
+    }
+      
       public void Delete(int id) {
        con = new Koneksi();
         Connect();
@@ -120,7 +137,7 @@ public class BarangMasukDao extends tb_barangmasuk{
             query = "delete from tb_barangmasuk where Id = '" + id + "'";
             st.executeUpdate(query);
             st.close();
-            con.conn.close();
+            //con.conn.close();
             JOptionPane.showMessageDialog(null, "Data berhasil di hapus");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data gagal di hapus");
