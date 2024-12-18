@@ -145,10 +145,8 @@ public class LoginForm extends javax.swing.JFrame {
                 }
 
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null,"hehehe");
+                JOptionPane.showMessageDialog(null,e.toString());
             }
-            
-             JOptionPane.showMessageDialog(null,"hehehe");
 
         }
 

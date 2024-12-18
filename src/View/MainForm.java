@@ -179,6 +179,11 @@ public class MainForm extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         jMenuItem8.setText("LAPORAN TRANSAKSI KESELURUHAN");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuItem5.setText("LAPORAN TRANSAKSI PER BARANG");
@@ -330,8 +335,13 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        
+        new LaporanByOrderForm().show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        new LaporanTransaksiForm().show();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments

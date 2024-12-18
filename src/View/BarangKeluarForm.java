@@ -109,7 +109,8 @@ public class BarangKeluarForm extends javax.swing.JFrame {
                 txtHarga.setText(kursIndonesia.format((bd.getHarga())));
                 txtSatuan.setText(rs.getString("satuan"));
                 txtNamaBarang.setText(rs.getString("nama"));
-                
+                txtSubtotal.setText(kursIndonesia.format(0.0));
+                txtJumlah.setText("0");
                 //txtRupiah.setText(kursIndonesia.format(Double.parseDouble(txtHarga.getText())));
                 
             }
